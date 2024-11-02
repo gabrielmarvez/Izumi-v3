@@ -1,0 +1,17 @@
+step "run-gcloud-in-a-script" {
+    name = "Run gcloud in a Script"
+
+    action {
+        action_type = "Octopus.GoogleCloudScripting"
+        properties = {
+            Octopus.Action.GoogleCloud.ImpersonateServiceAccount = "False"
+            Octopus.Action.GoogleCloud.Region = "singapore"
+            Octopus.Action.GoogleCloud.UseVMServiceAccount = "True"
+            Octopus.Action.GoogleCloud.Zone = "singapore"
+            Octopus.Action.Script.ScriptBody = "apt update"
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+        }
+        worker_pool = "hosted-ubuntu"
+    }
+}
